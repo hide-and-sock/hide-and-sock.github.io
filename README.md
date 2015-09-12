@@ -1,2 +1,2 @@
-# hide-and-sock.github.io
-web hosting for www.hideandsock.com
+# Hide and Sock
+web hosting for hideandsock.com

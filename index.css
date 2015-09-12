@@ -1,0 +1,171 @@
+html{
+	background-color: white;
+	/*background: url(img/down.jpg);*/
+	background-height: 100%;
+	background-repeat:repeat-x;
+    background-attachment:fixed;
+    background-position: left top;
+    position:absolute;
+}
+
+body > .row{
+	padding:10px;
+	/*margin:20px;*/
+	/*margin-bottom:0px;*/
+	background: white;
+	border-bottom: 10px solid #eee;
+}
+
+.splash-text{
+	background: none;
+	/*padding-top:70px;*/
+	/*padding-bottom:70px;*/
+	margin-bottom:20px;
+}
+
+.splash-text h1, .splash-text h2, .splash-text h3, .splash-text h4, .splash-text h5, .splash-text h6{
+	text-transform: uppercase;
+	font-weight: 900; 
+	display: inline-block;
+}
+
+.splash-text small{
+	border-bottom:3px solid black;
+	position: relative;
+	bottom: 8px;
+}
+
+h1{
+	color:white;
+	text-transform: uppercase;
+	font-weight: 900;
+	text-align: center;
+	font-size:5em;
+}
+
+h2{
+	text-transform: uppercase;
+	padding:10px;
+}
+
+.section{
+	padding:10px;
+}
+
+p.flow-text{
+	margin-top:0px;
+}
+
+img.map{
+	border: 10px solid #8bc34a;
+}
+
+/*nospacing*/
+
+.nospacing th, .nospacing td{
+	padding-top:0px;
+	padding-bottom:0px;
+	vertical-align: top;
+}
+
+.fixedtable{
+	table-layout: fixed;
+}
+
+/*basestable*/
+
+table.basestable th{
+	text-align:right;
+	vertical-align: top;
+	color: #4caf50;
+}
+
+/*scheduletable*/
+table.scheduletable {
+	font-size: 1.3em;
+}
+table.scheduletable .duration{
+	color:grey;
+	font-weight: 300;
+}
+table.scheduletable .duration::before{
+	content: " ~ ";
+}
+table.scheduletable .duration::after{
+	content: " min";
+}
+table.scheduletable th{
+	text-align: right;
+	/*font-style: italic;*/
+	font-weight: 400;
+	opacity: 0.9;
+}
+table.scheduletable span{
+	color: #2196f3;
+}
+table.scheduletable td{
+	text-align: left;
+	/*border: 1px solid grey;*/
+}
+
+
+/*#mathtable*/
+
+table#mathtable{
+	margin:10px;
+	margin-top:-3px;
+	font-size:1.2em;
+	margin-left:auto;
+	margin-right:auto;
+	max-width:300px;
+}
+table#mathtable th, table#mathtable td {
+}
+table#mathtable td {
+	padding:0px;
+	padding-left:10px;
+	line-height:0.9em;
+}
+table#mathtable th {
+	padding:0px;
+	text-align: right;
+	font-size:1.5em;
+}
+table#mathtable tr:last-child {
+	border-top:1px solid black;
+}
+
+
+table.playtable td{
+	text-align: center;
+	font-size:larger;
+}
+
+table.playtable td:first-child{
+	font-weight: bold;
+	text-align: right;
+	font-size:larger;
+}
+table.playtable td:nth-child(2){
+	/*font-style: italic;*/
+	text-align: left;
+	font-size:larger;
+}
+
+
+
+table.playtable a{
+	/*text-align: center;*/
+	font-size:medium;
+}
+
+
+/*footer*/
+.page-footer{
+	margin-top:0px !important;
+}
+footer a{
+	color:inherit;
+	opacity: 0.4;
+	text-decoration: underline;
+}
