@@ -66,6 +66,8 @@ function showInfo(data, tabletop) {
   for(var i=0; i < data.userData.elements.length; i++){
     if (data.userData.elements[i]['Code'] in dataObject){
       dataObject[data.userData.elements[i]['Code']].name = data.userData.elements[i]['Name'];
+      dataObject[data.userData.elements[i]['Code']].zone = data.userData.elements[i]['Zone'];
+      dataObject[data.userData.elements[i]['Code']].team = data.userData.elements[i]['Team'];
     }
   }
 
@@ -98,6 +100,10 @@ function showInfo(data, tabletop) {
   }
 
   console.log(dataObject);
+
+
+  renderGraph(process(dataObject));
+
 }
 
 function youData(secret){
