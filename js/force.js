@@ -22,13 +22,17 @@ function process(dataObject){
     graph["nodes"].push({
       "name" : el.name,
       "group" : el.zone,
+      "score": el.score
     });
     el.number = i;
   }
-  console.log(dataObject);
+
   for(var i=0; i<Object.keys(dataObject).length; i++){
     var el = dataObject[Object.keys(dataObject)[i]];
     for(var j=0; j<el.finds.length; j++){
+      if (!(el.finds[j] in dataObject)){
+        continue;
+      }
       graph["links"].push({
         "source": i,
         "target": dataObject[el.finds[j]].number,
@@ -36,7 +40,6 @@ function process(dataObject){
       })
     }
   }
-  console.log(graph);
 
   return graph;
 }
@@ -52,14 +55,16 @@ function renderGraph(input){
     .enter().append("line")
       .attr("class", "link")
       .style("stroke-width", function(d) { 
-        return 0.2*Math.sqrt(d.value); 
+        return scaling_thickness*Math.sqrt(d.value); 
       });
 
   var node = svg.selectAll(".node")
       .data(graph.nodes)
     .enter().append("circle")
       .attr("class", "node")
-      .attr("r", 5)
+      .attr("r", function(d) { 
+        return scaling_radius*Math.log(d.score); 
+      })
       .style("fill", function(d) { 
         return color(d.group); 
       })

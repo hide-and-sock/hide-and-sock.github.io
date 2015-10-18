@@ -12,7 +12,7 @@ games = [
 		'datestring' : '24 August 2015 • 2-4pm',
 		'registerlink' : '',
 		'tallylink' : '',
-		'rankingslink' : '/rankings.html',
+		'rankingslink' : 'rankings/sydney.html',
 		'facebooklink' : ''
 	}
 ];

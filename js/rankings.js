@@ -5,7 +5,6 @@ $('#go').click(function(){
 })
 
 // var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0AmYzu_s7QHsmdDNZUzRlYldnWTZCLXdrMXlYQzVxSFE&output=html';
-var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1OzMyZkpnDol7aeA_fpEbhTpgAEVVfQrGsBFyu29IWso/pubhtml';
 
 var dataObject = {};
 
@@ -99,11 +98,7 @@ function showInfo(data, tabletop) {
     $('#tops tbody').append("<tr> <td>"+dataArray[i].name+"</td> <td>"+parseInt(dataArray[i].score)+"</td> <td>"+dataArray[i].finds.length+"</td> <td>"+dataArray[i].founds.length+"</td> </tr>");
   }
 
-  console.log(dataObject);
-
-
   renderGraph(process(dataObject));
-
 }
 
 function youData(secret){
