@@ -214,27 +214,29 @@
 
 <script type='text/template' id='template'>
 	<% for (var i=0; i<games.length; i++){ %>
-	<div class='row'>
-		<div class='hide-on-small-only col s12 m3 right-align'>
-			<h4><%=games[i].longname%></h4>
-		</div>
-		<div class='col s12 m9 left-align'>
-			<h4 class='hide-on-med-and-up'><%=games[i].longname%></h4>
-			<h4><small class='grey-text'><%=games[i].datestring%></small></h4>
-			<a class="btn red 			white-text" href='<%=games[i].registerlink%>'> 
-				<u>Register</u>
-			</a>
-			<a class="btn deep-orange 	white-text" href='<%=games[i].tallylink%>'> 	
-				<u>Tally</u>
-			</a>
-			<a class="btn orange 		white-text" href='<%=games[i].rankingslink%>'> 
-				<u>Ranking</u>
-			</a>
-			<a class="btn blue 			white-text" href='<%=games[i].facebooklink%>'> 
-				<u>Facebook</u>
-			</a>
-		</div>
-	</div>
+		<h4><%=games[i].longname%></h4>
+		<h4><small class='grey-text'><%=games[i].datestring%></small></h4>
+		<a class="btn-flat white black-text" > Before the game: </a>
+		<br/>
+		<a class="btn white red-text" href='<%=games[i].registerlink%>'> 
+			<b>Register</b> to play
+		</a>
+		<a class="btn white amber-text" href='<%=games[i].rankingslink%>'> 
+			Check your <b>Zones</b>
+		</a>
+		<a class="btn white blue-text" href='<%=games[i].facebooklink%>'> 
+			Join the <b>Facebook</b> event
+		</a>
+		<br/>
+		<a class="btn-flat white black-text" > After the game: </a>
+		<br/>
+		<a class="btn white deep-orange-text" href='<%=games[i].tallylink%>'> 	
+			<b>Tally</b> your points
+		</a>
+		<a class="btn white orange-text" href='<%=games[i].rankingslink%>'> 
+			Check your <b>Ranking</b>
+		</a>
+		<hr/>
 	<% } %>
 </script>
 
