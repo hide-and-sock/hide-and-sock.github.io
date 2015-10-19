@@ -204,6 +204,7 @@
 				Built by <a href="http://jbuckland.com">James Buckland</a> and <a href="http://dmcc.co">Danny McClanahan</a>.
 				Source on <a href="https://github.com/hide-and-sock"> GitHub.</a> <br/>Built with Mailgun, Google App Engine, Materialize, and TabletopJS.
 				Concept by <a href="http://jbuckland.com">James Buckland</a>, Anna Robbins, <a href="http://www.aei.mpg.de/79660/employee_page?c=151012&employee_id=31928">Claudio Paganini</a>, and  Aaron Luo.
+				Original event <a href="https://www.facebook.com/events/1568336823455138/">here</a>.
 			</small>
 
 		</div>
@@ -219,21 +220,16 @@
 			<small class='right grey-text'><%=games[i].datestring%></small> 
 		</h4>
 		<p class='left-align'>
-			<% if (games[i].hasOccurred<=0){ %>
-				<a class="btn white-text red" href='<%=games[i].registerlink%>'> 
-					<b>Register</b><span class='hide-on-small-only'> to play</span>
-				</a>
-			<% }%>
-			
-			<% if (games[i].hasOccurred>=0){ %>
-				<a class="btn white-text amber <%=games[i].hasOccurred==2?'disabled':''%>" href='<%=games[i].tallylink%>'> 	
-					<b>Tally</b><span class='hide-on-small-only'> your points</span>
-				</a>
+			<a class="btn white-text red <%=games[i].hasOccurred>0?'disabled':''%>" href='<%=games[i].registerlink%>'> 
+				<b>Register</b><span class='hide-on-small-only'> to play</span>
+			</a>
+			<a class="btn white-text amber <%=games[i].hasOccurred<0?'disabled':''%>" href='<%=games[i].tallylink%>'> 	
+				<b>Tally</b><span class='hide-on-small-only'> your points</span>
+			</a>
 
-				<a class="btn white-text orange <%=games[i].hasOccurred==2?'disabled':''%>" href='<%=games[i].rankingslink%>'> 
-					<span class='hide-on-small-only'>Check your </span><b>Ranking</b>
-				</a>
-			<% } %>
+			<a class="btn white-text orange <%=games[i].hasOccurred<0?'disabled':''%>" href='<%=games[i].rankingslink%>'> 
+				<span class='hide-on-small-only'>Check your </span><b>Ranking</b>
+			</a>
 			<br/>
 		</p>
 		<hr/>
@@ -241,13 +237,10 @@
 </script>
 
 <script src="lib/jquery-2.1.4.min.js"></script>
-<!-- // <script src="lib/parse-1.5.0.min.js"></script> -->
-
 <script src="lib/underscore.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
 <script src="js/games.js"></script>
 <script type='text/javascript'>
-	// console.log(  _.template( $( "#template" ).html() ) );
 	$('.games').html( _.template( $( "#template" ).html() ) ( games ) );
 </script>
 
