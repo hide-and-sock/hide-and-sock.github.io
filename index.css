@@ -56,108 +56,16 @@ p.flow-text{
 	margin-top:0px;
 }
 
-img.map{
-	border: 10px solid #8bc34a;
-}
-
-/*nospacing*/
-
-.nospacing th, .nospacing td{
-	padding-top:0px;
-	padding-bottom:0px;
-	vertical-align: top;
-}
-
-.fixedtable{
-	table-layout: fixed;
-}
-
-/*basestable*/
-
-table.basestable th{
-	text-align:right;
-	vertical-align: top;
-	color: #4caf50;
-}
-
-/*scheduletable*/
-table.scheduletable {
-	font-size: 1.3em;
-}
-table.scheduletable .duration{
-	color:grey;
-	font-weight: 300;
-}
-table.scheduletable .duration::before{
-	content: " ~ ";
-}
-table.scheduletable .duration::after{
-	content: " min";
-}
-table.scheduletable th{
-	text-align: right;
-	/*font-style: italic;*/
-	font-weight: 400;
-	opacity: 0.9;
-}
-table.scheduletable span{
-	color: #2196f3;
-}
-table.scheduletable td{
-	text-align: left;
-	/*border: 1px solid grey;*/
-}
 
 
-/*#mathtable*/
-
-table#mathtable{
-	margin:10px;
-	margin-top:-3px;
-	font-size:1.2em;
-	margin-left:auto;
-	margin-right:auto;
-	max-width:300px;
-}
-table#mathtable th, table#mathtable td {
-}
-table#mathtable td {
-	padding:0px;
-	padding-left:10px;
-	line-height:0.9em;
-}
-table#mathtable th {
-	padding:0px;
-	text-align: right;
-	font-size:1.5em;
-}
-table#mathtable tr:last-child {
-	border-top:1px solid black;
-}
-
-
-table.playtable td{
+table.condensed th{
 	text-align: center;
-	font-size:larger;
+}
+table.condensed td{
+	padding:5px;
+	text-align: center;
 }
 
-table.playtable td:first-child{
-	font-weight: bold;
-	text-align: right;
-	font-size:larger;
-}
-table.playtable td:nth-child(2){
-	/*font-style: italic;*/
-	text-align: left;
-	font-size:larger;
-}
-
-
-
-table.playtable a{
-	/*text-align: center;*/
-	font-size:medium;
-}
 
 
 /*footer*/

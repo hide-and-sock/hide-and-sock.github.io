@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hide and Seek</title>
+	<title>Hide and Sock</title>
 	<!-- meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -214,28 +214,28 @@
 
 <script type='text/template' id='template'>
 	<% for (var i=0; i<games.length; i++){ %>
-		<h4><%=games[i].longname%></h4>
-		<h4><small class='grey-text'><%=games[i].datestring%></small></h4>
-		<a class="btn-flat white black-text" > Before the game: </a>
-		<br/>
-		<a class="btn white red-text" href='<%=games[i].registerlink%>'> 
-			<b>Register</b> to play
-		</a>
-		<a class="btn white amber-text" href='<%=games[i].rankingslink%>'> 
-			Check your <b>Zones</b>
-		</a>
-		<a class="btn white blue-text" href='<%=games[i].facebooklink%>'> 
-			Join the <b>Facebook</b> event
-		</a>
-		<br/>
-		<a class="btn-flat white black-text" > After the game: </a>
-		<br/>
-		<a class="btn white deep-orange-text" href='<%=games[i].tallylink%>'> 	
-			<b>Tally</b> your points
-		</a>
-		<a class="btn white orange-text" href='<%=games[i].rankingslink%>'> 
-			Check your <b>Ranking</b>
-		</a>
+		<h4>
+			<%=games[i].longname%> 
+			<small class='right grey-text'><%=games[i].datestring%></small> 
+		</h4>
+		<p class='left-align'>
+			<% if (games[i].hasOccurred<=0){ %>
+				<a class="btn white-text red" href='<%=games[i].registerlink%>'> 
+					<b>Register</b><span class='hide-on-small-only'> to play</span>
+				</a>
+			<% }%>
+			
+			<% if (games[i].hasOccurred>=0){ %>
+				<a class="btn white-text amber" href='<%=games[i].tallylink%>'> 	
+					<b>Tally</b><span class='hide-on-small-only'> your points</span>
+				</a>
+
+				<a class="btn white-text orange" href='<%=games[i].rankingslink%>'> 
+					<span class='hide-on-small-only'>Check your </span><b>Ranking</b>
+				</a>
+			<% } %>
+			<br/>
+		</p>
 		<hr/>
 	<% } %>
 </script>
