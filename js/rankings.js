@@ -1,5 +1,13 @@
 window.onload = function() { init() };
 
+$("#secret").keyup(function() {
+  console.log($('#secret').val().length);
+  console.log($('#secret').val());
+  if ( event.which == 13 || $('#secret').val().length==4) {
+     // event.preventDefault();
+    $('#go').click();
+  }
+});
 $('#go').click(function(){
   youData($('input#secret').val().toUpperCase());
 })
@@ -28,9 +36,10 @@ function showInfo(data, tabletop) {
   var codes = ['Code 1','Code 2','Code 3','Code 4','Code 5'];
 
   //initialize dataObject
+  var name_phrase = data.finds.column_names[1];
+  console.log(data.finds);
   for (var i=0; i < datafinds.elements.length; i++){
     // console.log(datafinds.elements[i]);
-    var name_phrase = data.finds.column_names[1];
     var row = datafinds.elements[i]
     var secret = row[name_phrase].toUpperCase();
     // console.log(secret);
@@ -65,6 +74,7 @@ function showInfo(data, tabletop) {
   for(var i=0; i < data.userData.elements.length; i++){
     if (data.userData.elements[i]['Code'] in dataObject){
       dataObject[data.userData.elements[i]['Code']].name = data.userData.elements[i]['Name'];
+      dataObject[data.userData.elements[i]['Code']].location = data.userData.elements[i]['Location'];
       dataObject[data.userData.elements[i]['Code']].zone = data.userData.elements[i]['Zone'];
       dataObject[data.userData.elements[i]['Code']].team = data.userData.elements[i]['Team'];
     }
@@ -102,16 +112,24 @@ function showInfo(data, tabletop) {
 }
 
 function youData(secret){
-  console.log(secret);
-  $('div#you_data').removeClass('hide', 1000, "easeInBack");
-  var obj = dataObject[secret];
-  for(var i = 0; i < obj.finds.length; i++){
-    $('ul#you_finds').append('<li>'+dataObject[obj.finds[i]].name+'</li>');
+  console.log(dataObject);
+  if(secret in dataObject){
+    $('div#you_data').removeClass('hide', 1000, "easeInBack");
+    var obj = dataObject[secret];
+    $('ul#you_finds').empty();
+    $('ul#you_founds').empty();
+    for(var i = 0; i < obj.finds.length; i++){
+      if(obj.finds[i] in dataObject){
+        $('ul#you_finds').append('<li><small class="grey-text">'+dataObject[obj.finds[i]].location+'</small> '+dataObject[obj.finds[i]].name+'</li>');
+      }
+    }
+    for(var i = 0; i < obj.founds.length; i++){
+        $('ul#you_founds').append('<li>'+dataObject[obj.founds[i]].name+' <small class="grey-text">'+dataObject[obj.founds[i]].location+'</small></li>');
+    } 
+  } else {
 
   }
-  for(var i = 0; i < obj.founds.length; i++){
-    $('ul#you_founds').append('<li>'+dataObject[obj.founds[i]].name+'</li>');  
-  }
+
 }
 
 

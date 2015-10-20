@@ -1,16 +1,16 @@
 var width = 500,
-    height = 500;
+    height = 400;
 
-var color = d3.scale.category20();
+var color = d3.scale.category10();
 
 var force = d3.layout.force()
     .charge(-120)
     .linkDistance(30)
     .size([width, height]);
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+var svg = d3.select("#graphs").append("svg");
+    // .attr("width", width)
+    // .attr("height", height);
 
 function process(dataObject){
   var graph = {};
@@ -21,7 +21,9 @@ function process(dataObject){
     el = dataObject[Object.keys(dataObject)[i]];
     graph["nodes"].push({
       "name" : el.name,
+      "location" : el.location,
       "group" : el.zone,
+      "team" : el.team,
       "score": el.score
     });
     el.number = i;
@@ -30,14 +32,15 @@ function process(dataObject){
   for(var i=0; i<Object.keys(dataObject).length; i++){
     var el = dataObject[Object.keys(dataObject)[i]];
     for(var j=0; j<el.finds.length; j++){
-      if (!(el.finds[j] in dataObject)){
-        continue;
+      if (el.finds[j] in dataObject){
+        if (el.team != dataObject[el.finds[j]].team){
+          graph["links"].push({
+            "source": i,
+            "target": dataObject[el.finds[j]].number,
+            "value": el.score
+          });
+        }
       }
-      graph["links"].push({
-        "source": i,
-        "target": dataObject[el.finds[j]].number,
-        "value": el.score
-      })
     }
   }
 
@@ -51,27 +54,27 @@ function renderGraph(input){
     .start();
 
   var link = svg.selectAll(".link")
-      .data(graph.links)
+    .data(graph.links)
     .enter().append("line")
-      .attr("class", "link")
-      .style("stroke-width", function(d) { 
-        return scaling_thickness*Math.sqrt(d.value); 
-      });
+    .attr("class", "link")
+    .style("stroke-width", function(d) { 
+      return scaling_thickness*Math.sqrt(d.value); 
+    });
 
   var node = svg.selectAll(".node")
-      .data(graph.nodes)
+    .data(graph.nodes)
     .enter().append("circle")
-      .attr("class", "node")
-      .attr("r", function(d) { 
-        return scaling_radius*Math.log(d.score); 
-      })
-      .style("fill", function(d) { 
-        return color(d.group); 
-      })
-      .call(force.drag);
+    .attr("class", "node")
+    .attr("r", function(d) { 
+      return scaling_radius*Math.log(d.score); 
+    })
+    .style("fill", function(d) { 
+      return color(d.team); 
+    })
+    .call(force.drag);
 
   node.append("title")
-      .text(function(d) { return d.name; });
+    .text(function(d) { return d.name; });
 
   force.on("tick", function() {
     link.attr("x1", function(d) { return d.source.x; })
